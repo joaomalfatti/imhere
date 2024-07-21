@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, TextInput, TouchableOpacity} from 'react-native';
+import {Text, View, TextInput, TouchableOpacity, ScrollView} from 'react-native';
 
 import { Participant } from '../../components/Participant';
 
@@ -7,7 +7,7 @@ import { styles } from './styles';
 
 export default function Home(){  
 
-  const participants = ['Alcimar', 'João', 'Eberson', 'Ewerton'];
+  const participants = ['Alcimar', 'João', 'Eberson', 'Ewerton', 'Daniel', 'Rogério', 'Junior', 'Helena'];
 
 
   function handleParticipantAdd(){
@@ -44,6 +44,7 @@ export default function Home(){
         </TouchableOpacity>
       </View>
 
+      <ScrollView>
       {
         participants.map(participant => (
           <Participant 
@@ -52,6 +53,7 @@ export default function Home(){
             onRemove={() => handleParticipantRemove(participant)}/>
         ))
       }
+      </ScrollView>
 
     </View>
   );

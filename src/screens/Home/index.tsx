@@ -7,6 +7,8 @@ import { styles } from './styles';
 
 export default function Home(){  
 
+  const participants = ['Alcimar', 'João', 'Eberson', 'Ewerton'];
+
 
   function handleParticipantAdd(){
     console.log("Você clicou no botão de adicionar")
@@ -42,7 +44,12 @@ export default function Home(){
         </TouchableOpacity>
       </View>
 
-      <Participant name = "João Elias" onRemove={() => handleParticipantRemove("João")}/>
+      {
+        participants.map(participant => (
+          <Participant name = "João Elias" onRemove={() => handleParticipantRemove("João")}/>
+        ))
+      }
+      
     </View>
   );
 }

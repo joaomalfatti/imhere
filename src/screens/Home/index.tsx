@@ -46,10 +46,13 @@ export default function Home(){
 
       {
         participants.map(participant => (
-          <Participant name = "João Elias" onRemove={() => handleParticipantRemove("João")}/>
+          <Participant 
+            key={participant}
+            name ={participant}
+            onRemove={() => handleParticipantRemove(participant)}/>
         ))
       }
-      
+
     </View>
   );
 }

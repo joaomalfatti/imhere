@@ -44,7 +44,27 @@ export default function Home(){
         </TouchableOpacity>
       </View>
 
-      <FlatList 
+      {/* Flatlist não contém presença de nome*/}
+      {/*<FlatList 
+        data={[]}
+        keyExtractor={item => item}
+        renderItem={({item}) => (
+          <Participant 
+            key={item}
+            name ={item}
+            onRemove={() => handleParticipantRemove(item)}
+            />
+        )}
+        showsVerticalScrollIndicator={false}
+        ListEmptyComponent={() => (
+          <Text style={styles.listEmptyText}>
+            Ninguém chegou no evento ainda? Adicione os participantes na sua lista de eventos.
+          </Text>
+        )}
+      />*/}
+
+      {/* Flatlist com presença de vários nomes.*/}
+      <FlatList    
         data={participants}
         keyExtractor={item => item}
         renderItem={({item}) => (
@@ -55,6 +75,7 @@ export default function Home(){
             />
         )}
       />
+
     </View>
   );
 }

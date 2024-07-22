@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, TextInput, TouchableOpacity, FlatList} from 'react-native';
+import {Text, View, TextInput, TouchableOpacity, FlatList, Alert} from 'react-native';
 
 import { Participant } from '../../components/Participant';
 
@@ -11,6 +11,9 @@ export default function Home(){
 
 
   function handleParticipantAdd(){
+    if(participants.includes("João")){
+      return Alert.alert("Participante existe", "Já existe um participante com esse nome.")
+    }
     console.log("Você clicou no botão de adicionar")
   }
 

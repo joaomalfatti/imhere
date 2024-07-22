@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, TextInput, TouchableOpacity, ScrollView} from 'react-native';
+import {Text, View, TextInput, TouchableOpacity, FlatList} from 'react-native';
 
 import { Participant } from '../../components/Participant';
 
@@ -44,17 +44,17 @@ export default function Home(){
         </TouchableOpacity>
       </View>
 
-      <ScrollView>
-      {
-        participants.map(participant => (
+      <FlatList 
+        data={participants}
+        keyExtractor={item => item}
+        renderItem={({item}) => (
           <Participant 
-            key={participant}
-            name ={participant}
-            onRemove={() => handleParticipantRemove(participant)}/>
-        ))
-      }
-      </ScrollView>
-
+            key={item}
+            name ={item}
+            onRemove={() => handleParticipantRemove(item)}
+            />
+        )}
+      />
     </View>
   );
 }

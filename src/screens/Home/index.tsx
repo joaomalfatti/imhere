@@ -6,26 +6,33 @@ import { Participant } from '../../components/Participant';
 import { styles } from './styles';
 
 export default function Home(){  
-  const [participants, setParticipants] = useState(['João']);
 
+  /* Esse aqui estado da lista dos participantes*/
+  const [participants, setParticipants] = useState<string[]>([]);
 
+  /* Esse aqui estado dos participantes*/
+  const [participantName, setParticipantName] = useState('');
 
 
   function handleParticipantAdd(){
-    if(participants.includes("Rodrigo")){
+    /* Caso o indíviduo exista, ele não vai adicionar.*/
+    if(participants.includes(participantName)){
       return Alert.alert("Participante existe", "Já existe um participante com esse nome.")
     }
     
-    setParticipants(prevState =>[...prevState, 'Ana']);
-    console.log(participants);
+    /* Aqui e depois da verificação, para adicionar o participante.*/
+    setParticipants(prevState =>[...prevState, participantName]);
+    setParticipantName('');
     
   }
 
   function handleParticipantRemove(name: string){
+    
     Alert.alert('Remover', `Remover o participante ${name}?`, [
       {
         text: 'Sim',
-        onPress: () => Alert.alert(`${name} foi Deletado!`)
+            /*Deletar o participante para que ele some do array*/
+        onPress: () => setParticipants(prevState => prevState.filter(Participant => Participant != name))
       },
       {
         text: 'Não',
@@ -33,7 +40,7 @@ export default function Home(){
       }
     ])
   }
-
+  
   return (
     <View style={styles.container}>
       <Text style={styles.eventName}>
@@ -49,6 +56,8 @@ export default function Home(){
           style={styles.eventInput}
           placeholder='Nome do participante'
           placeholderTextColor='#6B6B6B'
+          onChangeText={setParticipantName}
+          value={participantName}
         />
 
         <TouchableOpacity 
